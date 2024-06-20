@@ -1,6 +1,7 @@
 package com.bilel.demo.controller;
 
-import org.hibernate.mapping.List;
+import java.util.List;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bilel.demo.modele.Produit;
 import com.bilel.demo.service.ProduitService;
 
-import lombok.AllArgsConstructor; 
+import lombok.AllArgsConstructor;
 
 
 @RestController
@@ -29,9 +30,10 @@ public class ProduitController {
         return produitService.creer(produit) ; 
     }
 
+
     @GetMapping("/read")
     public List<Produit> read() {
-        return produitService.Lire();
+        return produitService.lire();
     }
 
     @PutMapping("/update/{id}") 
@@ -40,7 +42,7 @@ public class ProduitController {
     }
 
     @DeleteMapping("/delete")
-    public Produit delete(@PathVariable Long id){
+    public String delete(@PathVariable Long id){
         return produitService.supprimer(id); 
     }
 

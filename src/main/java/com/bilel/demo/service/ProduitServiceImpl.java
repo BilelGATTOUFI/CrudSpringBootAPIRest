@@ -21,14 +21,14 @@ public class ProduitServiceImpl implements ProduitService {
     }
 
     @Override
-    public List<Produit> Lire() {
+    public List<Produit> lire() {
         return produitRepository.findAll();
 
     }
 
     @Override
     public Produit modifier(Long id, Produit produit) {
-        return produitRepository.findBy(id)
+        return produitRepository.findById(id)
             .map(p->{
                 p.setPrix(produit.getPrix()); 
                 p.setNom(produit.getNom());
